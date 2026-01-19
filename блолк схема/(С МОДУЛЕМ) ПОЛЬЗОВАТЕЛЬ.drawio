@@ -1,0 +1,200 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 YaBrowser/25.12.0.0 Safari/537.36" version="29.3.2">
+  <diagram name="Страница-1" id="u9kNeasix_ZLiOr3aSRb">
+    <mxGraphModel dx="2253" dy="1961" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="psWPWImm9U-PE9yeMebc-51" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="" vertex="1">
+          <mxGeometry height="397.5" width="390" x="-440" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="190" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-2" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-3" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="главное меню&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-5" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-6" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="возможность выбрать предмет сразу (математика ,русский и тд.)&amp;nbsp; или нажать &quot;начать использование&amp;nbsp;" vertex="1">
+          <mxGeometry height="90" width="140" x="470" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;nbsp;выбор предмета: перенос пользователя к выбранному предмету и показ конспектов этого предмета&amp;nbsp;&amp;nbsp;" vertex="1">
+          <mxGeometry height="90" width="140" x="470" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-9" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-10" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="пользователь может выбрать &quot;просмотр&quot; или &quot;сохранить копию&quot;" vertex="1">
+          <mxGeometry height="70" width="140" x="480" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-12" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.433;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="psWPWImm9U-PE9yeMebc-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&quot;сохранить копию&quot;&lt;div&gt;она сохраняется&amp;nbsp; в &quot;мои записи&quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="640" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-14" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-15" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&quot;просмотр&quot;&lt;div&gt;открывается окно с самим конспектом . Есть еще три кнопки : печать, сохранить и закрыть&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="435" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-17" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="печать: открывается системное окно с выбором принтера&amp;nbsp; и возможность&amp;nbsp; распечатать&amp;nbsp; &amp;nbsp;копию конспекта&amp;nbsp;" vertex="1">
+          <mxGeometry height="90" width="140" x="435" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="если принтера нет,то кнопка не будет работать&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="445" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="сохранить : появляется системное окно с выбором куда сохранить&amp;nbsp;" vertex="1">
+          <mxGeometry height="90" width="140" x="610" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="закрыть: конспект закрывается и пользователь может выбрать&amp;nbsp; конспекты&amp;nbsp; ,по тому же предмету&amp;nbsp;" vertex="1">
+          <mxGeometry height="115" width="134" x="290" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-22" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.455;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="psWPWImm9U-PE9yeMebc-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-23" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="начать использование: пользователь переносится в &quot;все конспекты &quot;" vertex="1">
+          <mxGeometry height="95" width="120" x="290" y="287.5" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-25" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-26" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="показываются все конспекты пользователя со всех предметов&amp;nbsp; ,пользователь может их редактировать ,посмотреть или удалить .&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 51));&quot;&gt;Так же&amp;nbsp; &amp;nbsp;пользователь может выбрать сортировку по предмет&lt;/font&gt;у&amp;nbsp;" vertex="1">
+          <mxGeometry height="145" width="145" x="300" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-27" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-28" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-29" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-30" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-50">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="слева от главного меню ,есть другие кнопки&amp;nbsp; (поиск ,все конспекты ,мои конспекты, создание конспекта , импорт из файла&amp;nbsp; )&amp;nbsp; , есть еще меню статистики(там показываются : (готовые конспекты ,конспекты пользователя&amp;nbsp; и показываются данные по всем предметам )&amp;nbsp; и там же имеется кнопка&quot; обновить &quot;" vertex="1">
+          <mxGeometry height="217.5" width="180" x="30" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="при выборе &quot;все конспекты&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="130" y="415" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-33" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.017;entryY=0.183;entryDx=0;entryDy=0;entryPerimeter=0;" target="psWPWImm9U-PE9yeMebc-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-53" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;nbsp;при выборе &quot;поиск&quot; , пользователь может ввести&amp;nbsp; название нужного конспекта ,&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 0));&quot;&gt;ИЛИ СЛОВО&lt;/font&gt; и появится нужный&amp;nbsp; конспект&amp;nbsp;&amp;nbsp;" vertex="1">
+          <mxGeometry height="90" width="140" x="-30" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-35" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-36" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="мои конспекты : пользователь переносится в одноименное меню, где будут его конспекты и сохраненные&amp;nbsp;&amp;nbsp;" vertex="1">
+          <mxGeometry height="112.5" width="130" x="-190" y="132.5" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-37" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1.015;entryY=0.44;entryDx=0;entryDy=0;entryPerimeter=0;" target="psWPWImm9U-PE9yeMebc-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-38" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-39" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-40" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="создание конспекта:&lt;div&gt;появляется всплывающее окно . В нем пользователь сначала выбирает название предмета ,тему конспекта , пишет сам конспект&amp;nbsp; , может добавить изображение&amp;nbsp; ,так же может выбрать шаблон&amp;nbsp; конспекта (в зависимости от предмета ) . Может выбрать две кнопки&amp;nbsp; &quot;сохранить &quot; или &quot;отмена &quot;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="150" x="-200" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="отмена: окно с создание закрывается&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="-260" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-42" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-43" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&quot;сохранить&quot; они сохраняются в &quot; все конспекты &quot;" vertex="1">
+          <mxGeometry height="60" width="120" x="-110" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-44" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="редактировать" vertex="1">
+          <mxGeometry height="60" width="120" x="150" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-45" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.952;entryDx=0;entryDy=0;entryPerimeter=0;" target="psWPWImm9U-PE9yeMebc-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-46" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-47" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="запуск&amp;nbsp; программы" vertex="1">
+          <mxGeometry height="80" width="120" x="340" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-48" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="пользовательская&amp;nbsp;" vertex="1">
+          <mxGeometry height="100" width="180" x="480" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-49" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="импорт из файла: при нажатии ,всплывает системное окно и пользователь может выбрать текстовый файл&amp;nbsp; и он будет добавлен в приложение" vertex="1">
+          <mxGeometry height="110" width="150" x="45" y="-7.5" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-50" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&quot;обновить &quot; ,при ее использование&amp;nbsp; обновляется статистика (если пользователь что-то изменил )" vertex="1">
+          <mxGeometry height="75" width="150" x="-210" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-55" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="psWPWImm9U-PE9yeMebc-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-52" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="после того как пользователь ввел нужное слово, выйдут конспекты с этим словом&amp;nbsp;" vertex="1">
+          <mxGeometry height="80" width="140" x="-210" y="725" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-57" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="psWPWImm9U-PE9yeMebc-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-54" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="зайдя на конспект ,пользователь может увидеть в конспекте выделенное слово" vertex="1">
+          <mxGeometry height="60" width="120" x="-390" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-58" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="" vertex="1">
+          <mxGeometry height="310" width="360" x="-10" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-56" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="выделенное слово будет иметь желтый фон" vertex="1">
+          <mxGeometry height="60" width="120" x="-390" y="838.75" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-59" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.528;entryY=0.161;entryDx=0;entryDy=0;entryPerimeter=0;" target="psWPWImm9U-PE9yeMebc-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-62" edge="1" parent="1" source="psWPWImm9U-PE9yeMebc-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="psWPWImm9U-PE9yeMebc-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-60" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="при выборе последней функции ,открывается небольшая &quot;шторка&quot; с выбором школьных предметов" vertex="1">
+          <mxGeometry height="110" width="140" x="120" y="898.75" as="geometry" />
+        </mxCell>
+        <mxCell id="psWPWImm9U-PE9yeMebc-61" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="выбрав нужный предмет, они&amp;nbsp; отсортируются по этому предмету&amp;nbsp; и будет только он&amp;nbsp;" vertex="1">
+          <mxGeometry height="82.5" width="130" x="130" y="1067.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
