@@ -278,15 +278,29 @@ class Database:
         ''', (f'%{keyword}%', f'%{keyword}%'))
         return cursor.fetchall()
     
-    def get_all_notes(self):
+    def get_all_notes(self, subject_filter=None):
+        """Получить все конспекты с возможностью фильтрации по предмету"""
         cursor = self.conn.cursor()
-        cursor.execute('''
-            SELECT n.*, s.name as subject_name, s.color
-            FROM notes n 
-            JOIN subjects s ON n.subject_id = s.id 
-            WHERE n.grade = 1
-            ORDER BY s.name, n.title
-        ''')
+        
+        if subject_filter:
+            # Фильтр по конкретному предмету
+            cursor.execute('''
+                SELECT n.*, s.name as subject_name, s.color
+                FROM notes n 
+                JOIN subjects s ON n.subject_id = s.id 
+                WHERE n.grade = 1 AND s.name = ?
+                ORDER BY s.name, n.title
+            ''', (subject_filter,))
+        else:
+            # Все конспекты без фильтра
+            cursor.execute('''
+                SELECT n.*, s.name as subject_name, s.color
+                FROM notes n 
+                JOIN subjects s ON n.subject_id = s.id 
+                WHERE n.grade = 1
+                ORDER BY s.name, n.title
+            ''')
+        
         return cursor.fetchall()
     
     def add_user_note(self, subject, title, content, images, grade=1):
@@ -348,14 +362,15 @@ class Database:
 
 
 # ============================================
-# ВИДЖЕТ ДЛЯ ПРОСМОТРА КОНСПЕКТА
+# ВИДЖЕТ ДЛЯ ПРОСМОТРА КОНСПЕКТА С ПОДСВЕТКОЙ ПОИСКА
 # ============================================
 class NoteViewer(QDialog):
-    def __init__(self, note_data, parent=None):
+    def __init__(self, note_data, parent=None, search_word=None):
         super().__init__(parent)
         self.note_data = note_data
         self.images = note_data.get('images', [])
         self.current_image_index = 0
+        self.search_word = search_word.lower() if search_word else None
         self.initUI()
     
     def initUI(self):
@@ -404,10 +419,16 @@ class NoteViewer(QDialog):
         content_widget = QWidget()
         content_layout = QVBoxLayout(content_widget)
         
-        # Текст конспекта
+        # Текст конспекта с подсветкой поиска
         content_text = QTextEdit()
         content_text.setReadOnly(True)
-        content_text.setHtml(self.format_content(self.note_data['content']))
+        
+        # Форматируем контент с подсветкой поиска
+        formatted_content = self.format_content_with_highlight(
+            self.note_data['content'], 
+            self.search_word
+        )
+        content_text.setHtml(formatted_content)
         content_text.setStyleSheet('''
             QTextEdit {
                 font-size: 14px;
@@ -501,9 +522,73 @@ class NoteViewer(QDialog):
         layout.addLayout(button_layout)
         self.setLayout(layout)
     
+    def format_content_with_highlight(self, content, search_word):
+        """Форматирует текст с подсветкой найденных слов"""
+        if not search_word:
+            return self.format_content(content)
+        
+        # Преобразуем маркеры списка
+        lines = content.split('\n')
+        html_lines = []
+        
+        for line in lines:
+            # Подсвечиваем искомые слова (без учета регистра)
+            if search_word:
+                line_lower = line.lower()
+                start_pos = 0
+                result_line = ""
+                
+                while True:
+                    pos = line_lower.find(search_word, start_pos)
+                    if pos == -1:
+                        result_line += line[start_pos:]
+                        break
+                    
+                    # Добавляем часть до найденного слова
+                    result_line += line[start_pos:pos]
+                    
+                    # Добавляем подсвеченное слово
+                    result_line += f'<span style="background-color: #FFD700; font-weight: bold;">{line[pos:pos+len(search_word)]}</span>'
+                    
+                    start_pos = pos + len(search_word)
+                
+                line = result_line
+            
+            # Применяем остальное форматирование
+            if line.strip().startswith('•'):
+                html_lines.append(f'<li>{line.strip()[1:].strip()}</li>')
+            elif line.strip().startswith('📌') or line.strip().startswith('🎵') or line.strip().startswith('❗'):
+                html_lines.append(f'<p style="font-weight: bold; color: #2c3e50; margin-top: 10px;">{line}</p>')
+            elif line.strip().startswith('🔢') or line.strip().startswith('🎯'):
+                html_lines.append(f'<p style="color: #3498db; margin-left: 20px;">{line}</p>')
+            elif line.strip().startswith('📅') or line.strip().startswith('📝'):
+                html_lines.append(f'<p style="background-color: #f8f9fa; padding: 8px; border-radius: 5px;">{line}</p>')
+            elif line.strip():
+                html_lines.append(f'<p>{line}</p>')
+            else:
+                html_lines.append('<br>')
+        
+        html_content = ''.join(html_lines)
+        return f'''
+        <html>
+        <head>
+            <style>
+                .highlight {{
+                    background-color: #FFD700;
+                    font-weight: bold;
+                    padding: 1px 3px;
+                    border-radius: 3px;
+                }}
+            </style>
+        </head>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+            {html_content}
+        </body>
+        </html>
+        '''
+    
     def format_content(self, content):
         """Форматирует текст для отображения в HTML"""
-        # Преобразуем маркеры списка
         lines = content.split('\n')
         html_lines = []
         
@@ -918,6 +1003,8 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.db = Database()
         self.current_notes = []
+        self.current_search_word = None  # Сохраняем текущее слово поиска
+        self.current_subject_filter = None  # Сохраняем текущий фильтр предмета
         self.initUI()
         self.load_initial_data()
         
@@ -965,10 +1052,15 @@ class MainWindow(QMainWindow):
         search_layout = QVBoxLayout()
         
         self.search_input = QLineEdit()
-        self.search_input.setPlaceholderText("Введите запрос...")
-        self.search_input.textChanged.connect(self.on_search)
+        self.search_input.setPlaceholderText("Введите слово для поиска...")
+        self.search_input.returnPressed.connect(self.on_search_advanced)
+        
+        search_btn = QPushButton("Найти")
+        search_btn.clicked.connect(self.on_search_advanced)
+        search_btn.setStyleSheet('background-color: #3498db; color: white; padding: 5px;')
         
         search_layout.addWidget(self.search_input)
+        search_layout.addWidget(search_btn)
         search_group.setLayout(search_layout)
         sidebar_layout.addWidget(search_group)
         
@@ -1320,14 +1412,20 @@ class MainWindow(QMainWindow):
         self.stats_label.setText(stats_text)
     
     def show_subject_notes(self, subject_id):
+        self.current_subject_filter = None  # Сбрасываем фильтр предмета
+        self.current_search_word = None  # Сбрасываем слово поиска
         self.current_notes = self.db.get_notes_by_subject(subject_id)
         self.show_notes_list("конспекты")
     
     def show_all_notes(self):
+        self.current_subject_filter = None  # Сбрасываем фильтр предмета
+        self.current_search_word = None  # Сбрасываем слово поиска
         self.current_notes = self.db.get_all_notes()
         self.show_notes_list("все конспекты")
     
     def show_user_notes(self):
+        self.current_subject_filter = None  # Сбрасываем фильтр предмета
+        self.current_search_word = None  # Сбрасываем слово поиска
         self.current_notes = self.db.get_user_notes()
         self.show_notes_list("мои конспекты", is_user_notes=True)
     
@@ -1336,16 +1434,73 @@ class MainWindow(QMainWindow):
         notes_widget = QWidget()
         layout = QVBoxLayout(notes_widget)
         
+        # Панель инструментов
+        toolbar_layout = QHBoxLayout()
+        
         # Заголовок
         title_label = QLabel(f"📚 {title.title()}")
         title_label.setStyleSheet('''
             font-size: 20px;
             font-weight: bold;
             color: #2c3e50;
-            padding: 15px;
-            border-bottom: 2px solid #3498db;
         ''')
-        layout.addWidget(title_label)
+        toolbar_layout.addWidget(title_label)
+        
+        toolbar_layout.addStretch()
+        
+        # Если это "Все конспекты", добавляем фильтр по предметам
+        if "все конспекты" in title.lower() and not self.current_search_word:
+            filter_layout = QHBoxLayout()
+            filter_layout.addWidget(QLabel("Фильтр по предмету:"))
+            
+            self.subject_filter_combo = QComboBox()
+            self.subject_filter_combo.addItem("Все предметы")
+            subjects = self.db.get_subjects()
+            for subject_id, name, color in subjects:
+                self.subject_filter_combo.addItem(name)
+            
+            # Устанавливаем текущий выбранный предмет, если фильтр активен
+            if self.current_subject_filter:
+                index = self.subject_filter_combo.findText(self.current_subject_filter)
+                if index >= 0:
+                    self.subject_filter_combo.setCurrentIndex(index)
+            
+            self.subject_filter_combo.currentTextChanged.connect(self.apply_subject_filter)
+            
+            # Кнопка сброса фильтра
+            reset_filter_btn = QPushButton("Сбросить фильтр")
+            reset_filter_btn.clicked.connect(self.reset_subject_filter)
+            reset_filter_btn.setStyleSheet('padding: 5px; background-color: #95a5a6; color: white;')
+            
+            filter_layout.addWidget(self.subject_filter_combo)
+            filter_layout.addWidget(reset_filter_btn)
+            toolbar_layout.addLayout(filter_layout)
+        
+        # Показываем текущий фильтр поиска, если он активен
+        if self.current_search_word:
+            search_info = QLabel(f"🔍 Поиск: '{self.current_search_word}'")
+            search_info.setStyleSheet('''
+                background-color: #FFD70030;
+                padding: 5px 10px;
+                border-radius: 5px;
+                font-weight: bold;
+            ''')
+            
+            clear_search_btn = QPushButton("✕ Очистить поиск")
+            clear_search_btn.clicked.connect(self.clear_search)
+            clear_search_btn.setStyleSheet('padding: 5px; background-color: #e74c3c; color: white;')
+            
+            toolbar_layout.addWidget(search_info)
+            toolbar_layout.addWidget(clear_search_btn)
+        
+        layout.addLayout(toolbar_layout)
+        
+        # Разделитель
+        separator = QFrame()
+        separator.setFrameShape(QFrame.HLine)
+        separator.setFrameShadow(QFrame.Sunken)
+        separator.setStyleSheet('background-color: #3498db;')
+        layout.addWidget(separator)
         
         if not self.current_notes:
             # Сообщение, если конспектов нет
@@ -1400,6 +1555,29 @@ class MainWindow(QMainWindow):
         self.main_area.addWidget(notes_widget)
         self.main_area.setCurrentWidget(notes_widget)
     
+    def apply_subject_filter(self, subject_name):
+        """Применяет фильтр по предмету"""
+        if subject_name == "Все предметы":
+            self.current_subject_filter = None
+            self.current_notes = self.db.get_all_notes()
+        else:
+            self.current_subject_filter = subject_name
+            self.current_notes = self.db.get_all_notes(subject_filter=subject_name)
+        
+        self.show_notes_list("все конспекты")
+    
+    def reset_subject_filter(self):
+        """Сбрасывает фильтр по предмету"""
+        self.current_subject_filter = None
+        self.current_notes = self.db.get_all_notes()
+        self.show_notes_list("все конспекты")
+    
+    def clear_search(self):
+        """Очищает поиск"""
+        self.current_search_word = None
+        self.search_input.clear()
+        self.show_all_notes()
+    
     def create_note_card(self, note, is_user_note=False):
         """Создает карточку конспекта"""
         card = QFrame()
@@ -1447,8 +1625,23 @@ class MainWindow(QMainWindow):
         subject_layout.addStretch()
         subject_layout.addWidget(grade_label)
         
-        # Краткое содержание
-        content_preview = QLabel(note[3][:100] + "..." if len(note[3]) > 100 else note[3])
+        # Краткое содержание с подсветкой поиска
+        content_preview_text = note[3][:100] + "..." if len(note[3]) > 100 else note[3]
+        
+        # Если есть слово поиска, подсвечиваем его в preview
+        if self.current_search_word:
+            search_word_lower = self.current_search_word.lower()
+            content_lower = content_preview_text.lower()
+            if search_word_lower in content_lower:
+                # Простая подсветка - заменяем слово в preview
+                content_preview_text = content_preview_text.replace(
+                    self.current_search_word, 
+                    f'<span style="background-color: #FFD700; font-weight: bold;">{self.current_search_word}</span>'
+                )
+        
+        content_preview = QLabel()
+        content_preview.setTextFormat(Qt.RichText)
+        content_preview.setText(content_preview_text)
         content_preview.setWordWrap(True)
         content_preview.setStyleSheet('color: #7f8c8d; padding: 5px 0;')
         
@@ -1488,7 +1681,7 @@ class MainWindow(QMainWindow):
         return card
     
     def open_note(self, note, is_user_note=False):
-        """Открывает конспект для просмотра"""
+        """Открывает конспект для просмотра с подсветкой поиска"""
         if is_user_note:
             note_data = {
                 'title': note[2],
@@ -1504,8 +1697,19 @@ class MainWindow(QMainWindow):
                 'images': []
             }
         
-        viewer = NoteViewer(note_data)
+        # Передаем слово поиска в NoteViewer для подсветки
+        viewer = NoteViewer(note_data, search_word=self.current_search_word)
         viewer.exec_()
+    
+    def on_search_advanced(self):
+        """Обработка расширенного поиска с сохранением слова"""
+        keyword = self.search_input.text().strip()
+        
+        if keyword:
+            self.current_search_word = keyword
+            self.current_subject_filter = None  # Сбрасываем фильтр предмета
+            self.current_notes = self.db.search_notes(keyword)
+            self.show_notes_list(f"результаты поиска: '{keyword}'")
     
     def create_user_note(self):
         """Создание нового конспекта"""
@@ -1648,14 +1852,6 @@ class MainWindow(QMainWindow):
                 f"Экспортировано конспектов: {export_count} из {len(notes)}\n\nПапка: {folder}"
             )
     
-    def on_search(self):
-        """Обработка поиска"""
-        keyword = self.search_input.text().strip()
-        
-        if keyword:
-            self.current_notes = self.db.search_notes(keyword)
-            self.show_notes_list(f"результаты поиска: '{keyword}'")
-    
     def refresh_view(self):
         """Обновление текущего вида"""
         current_widget = self.main_area.currentWidget()
@@ -1677,16 +1873,19 @@ class MainWindow(QMainWindow):
         """Показывает информацию о программе"""
         about_text = """
         <h2>Школьные конспекты - 1 класс</h2>
-        <p>Версия 1.0</p>
+        <p>Версия 1.2
+        Добавлены: фильтр по предметам и расширенный поиск с подсветкой</p>
+        <p>исправлены ошибки и добавлена возможность загружать фотографии</p>
         <p>Приложение для создания и хранения конспектов<br>
         по школьной программе первого класса РФ.</p>
         <hr>
-        <p><b>Функции:</b></p>
+        <p><b>Новые функции:</b></p>
         <ul>
+        <li>Фильтр по предметам в разделе "Все конспекты"</li>
+        <li>Расширенный поиск с подсветкой найденных слов</li>
         <li>Готовые конспекты по всем предметам</li>
         <li>Создание своих конспектов</li>
         <li>Добавление изображений и схем</li>
-        <li>Поиск по всем материалам</li>
         <li>Импорт и экспорт конспектов</li>
         </ul>
         <hr>
@@ -1705,6 +1904,20 @@ class MainWindow(QMainWindow):
         <li>Выберите предмет в левой панели</li>
         <li>Или нажмите "Все конспекты" для полного списка</li>
         <li>Используйте поиск для быстрого нахождения</li>
+        <li>В разделе "Все конспекты" используйте фильтр по предмету</li>
+        </ul>
+        
+        <h3>🔍 Расширенный поиск:</h3>
+        <ul>
+        <li>Введите слово в поле поиска и нажмите Enter или кнопку "Найти"</li>
+        <li>Найденные слова будут подсвечены желтым цветом</li>
+        <li>Для очистки поиска нажмите "Очистить поиск"</li>
+        </ul>
+        
+        <h3>📖 Фильтр по предметам:</h3>
+        <ul>
+        <li>В разделе "Все конспекты" выберите предмет из выпадающего списка</li>
+        <li>Для сброса фильтра нажмите "Сбросить фильтр"</li>
         </ul>
         
         <h3>✏️ Создание конспектов:</h3>
